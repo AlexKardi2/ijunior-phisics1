@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "name": "Base_Actions",
+    "maps": [
+        {
+            "name": "InGame",
+            "id": "06456382-6fef-48d4-a3c3-316de23459fd",
+            "actions": [
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "d8d294a9-4264-42f5-9da7-ecb1322b8abe",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f9a7ef92-bdc5-4763-a7f1-6b3dfb200f46",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "510751f4-3718-404f-8fc1-7cd795aee2c8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

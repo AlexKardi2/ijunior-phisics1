@@ -1,5 +1,5 @@
-using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RigidbodyGun : MonoBehaviour
 {
@@ -8,18 +8,29 @@ public class RigidbodyGun : MonoBehaviour
     [SerializeField] private float _speed = 10f;
     private float _timer = 1f;
     private int _shoots = 15;
+    InputAction shootAction;
 
+    private void Start()
+    {
+        print("Shoot action have found is " + shootAction != null);
+        shootAction = InputSystem.actions.FindAction("Shoot");
+    }
     private void Update()
     {
-        if (_timer < 0)
+        if (shootAction.))
         {
+            Shoot();
             _timer += 3f;
             _shoots--;
-            Rigidbody projectile = Instantiate(_rigidbodyPrefab, _startPosition.position, _rigidbodyPrefab.rotation);
-            Vector3 forward = _startPosition.forward;
-            projectile.linearVelocity = forward * _speed;
         }
         else
             _timer -= Time.deltaTime;
+    }
+
+    private void Shoot()
+    {
+        Rigidbody projectile = Instantiate(_rigidbodyPrefab, _startPosition.position, _rigidbodyPrefab.rotation);
+        Vector3 forward = _startPosition.forward;
+        projectile.linearVelocity = forward * _speed;
     }
 }

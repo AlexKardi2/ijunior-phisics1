@@ -15,9 +15,9 @@ public class RigidbodyGun : MonoBehaviour
         print("Shoot action have found is " + shootAction != null);
         shootAction = InputSystem.actions.FindAction("Shoot");
     }
-    private void Update()
+    private void Update_()
     {
-        if (shootAction.))
+        if (shootAction.IsPressed())
         {
             Shoot();
             _timer += 3f;

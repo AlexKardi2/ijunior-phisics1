@@ -1,6 +1,55 @@
 {
-    "version": 0,
+    "version": 1,
     "name": "RenamedAction",
-    "maps": [],
+    "maps": [
+        {
+            "name": "FlatMap",
+            "id": "25b7df9d-74e5-45fe-b3d6-d005638701dd",
+            "actions": [
+                {
+                    "name": "KeyShoot",
+                    "type": "Button",
+                    "id": "cafa7916-079f-4c83-933b-e5b071f62bbc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ClickShoot",
+                    "type": "Button",
+                    "id": "1970feb3-cf33-4754-8aa7-bd148cbb593a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4781e065-5745-43ff-abc4-af9f1de1bd71",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";MouseScheme",
+                    "action": "ClickShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a85ae01-77d0-4b04-989a-6d95203b612c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Board",
+                    "action": "KeyShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
     "controlSchemes": []
 }

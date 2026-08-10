@@ -1,0 +1,112 @@
+{
+    "version": 1,
+    "name": "ShooterActions",
+    "maps": [
+        {
+            "name": "ShooterPlayer",
+            "id": "91e916f6-fbee-43b3-bb94-95f2c7315aca",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "6c1c0424-10b3-4fb3-9602-d459409e18b4",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "950e97e8-a09b-4214-82af-2173e6c61e24",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "6302d3b2-1a32-40f2-8877-17a24c838c26",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "8ff04deb-ea9e-4a1c-8632-cb1d223bfebd",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "98501d28-3900-495c-bd70-18fe7b44a7b3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "c4271cdd-e5eb-4699-8981-0476740ce4e0",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "d40f3219-5bbe-4881-aa0d-6db385ed256e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "bf6782b7-0de9-4422-aac0-10a2ab93cd27",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "735f47e5-6ff3-4646-9c9b-877b79b397bf",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

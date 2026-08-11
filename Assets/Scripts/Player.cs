@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private Transform _cameraTransform;
     [SerializeField] private float _speed = 1;
     private Transform _transform;
     private CharacterController _characterController;
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _transform = transform;
+        if (_cameraTransform == null)
+            throw new 
         _characterController = GetComponent<CharacterController>();
         _movementAction = InputSystem.actions.FindAction("Movement");
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,21 +17,27 @@ public class Player : MonoBehaviour
     {
         _transform = transform;
         if (_cameraTransform == null)
-            throw new 
+            throw new NullReferenceException();
         _characterController = GetComponent<CharacterController>();
         _movementAction = InputSystem.actions.FindAction("Movement");
     }
 
     private void Update()
     {
+        Vector3 forward = Vector3.ProjectOnPlane( _cameraTransform.forward, Vector3.up);
+        forward.Normalize();
+        
         if (_characterController == null)
             return;
-        Vector3 playerSpeed = _movementAction.ReadValue<Vector3>();
-        playerSpeed *= _speed * Time.deltaTime; 
+        Vector3 input = _movementAction.ReadValue<Vector3>();
+        Vector3 movement = new Vector3(forward.x * input.x, 0, forward.z * input.z);
+        movement *= _speed * Time.deltaTime;
+        
+
 
         if (_characterController.isGrounded)
         {
-            _characterController.Move(playerSpeed + Vector3.down);
+            _characterController.Move(input + Vector3.down);
         }
         else
         {

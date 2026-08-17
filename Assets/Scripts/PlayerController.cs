@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Transform _cameraTransform;
     [SerializeField] private float _speed = 8;
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
             if (MustJump)
                 movement += Vector3.up * _jumpForce;
             else
-                movement += Physics.gravity;
+                movement += Vector3.down * Mathf.Max(_speed, _strafeSpeed);
             _characterController.Move(movement * Time.deltaTime);
         }
         else

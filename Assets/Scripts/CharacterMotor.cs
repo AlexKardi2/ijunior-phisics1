@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMotor : MonoBehaviour
+public class CharacterMotor : MonoBehaviour
 {
     [SerializeField] private float _speed = 8f;
     [SerializeField] private float _strafeSpeed = 7f;
@@ -26,20 +26,15 @@ public class PlayerMotor : MonoBehaviour
         if (_characterController.isGrounded)
         {
             if (jump)
-                _verticalSpeed = _jumpSpeed;
+                velocity += Vector3.up * _jumpSpeed;
             else
-                _verticalSpeed = Physics.gravity.y;
+                velocity += Vector3.down * Mathf.Max(_strafeSpeed, _speed);
         }
         else
         {
-            _verticalSpeed +=
-                Physics.gravity.y * _gravityFactor * Time.deltaTime;
+            velocity = _characterController.velocity + Physics.gravity * Time.deltaTime * _gravityFactor;
         }
 
-        velocity.y = _verticalSpeed;
-
-        _characterController.Move(
-            velocity * Time.deltaTime);
+        _characterController.Move(velocity * Time.deltaTime);
     }
-}
 }

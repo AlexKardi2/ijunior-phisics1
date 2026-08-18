@@ -2,95 +2,31 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(IPlayerInput))]
+[RequireComponent(typeof(CharacterMotor))]
+[RequireComponent(typeof(PlayerLook))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Transform _cameraTransform;
-    [SerializeField] private float _speed = 8;
-    [SerializeField] private float _strafeSpeed = 7;
-    [SerializeField] private float _jumpForce = 7;
-    [SerializeField] private float _gravityFactor = 1.7f;
-    [SerializeField] private float _horizontalMouseSensitivity = 0.5f;
-    [SerializeField] private float _verticalMouseSensitivity = 0.5f;
-    [SerializeField] private float _verticalMinAngle = -89f;
-    [SerializeField] private float _verticalMaxAngle = 89f;
-    private Transform _transform;
-    private CharacterController _characterController;
-    private InputAction _movementAction;
-    private InputAction _mouseDeltaAction;
-    private float _cameraAngle = 0;
-    private bool _isJumpCalled = false;
-
-    private bool MustJump
-    {
-        get
-        {
-            if (!_isJumpCalled)
-                return false;
-            _isJumpCalled = false;
-            return true;
-        }
-    }
+    private IPlayerInput _input;
+    private CharacterMotor _motor;
+    private PlayerLook _look;
 
     private void Awake()
     {
-        _transform = transform;
-        if (_cameraTransform == null)
-            throw new NullReferenceException();
-        _characterController = GetComponent<CharacterController>();
-        _movementAction = InputSystem.actions.FindAction("Movement");
-        _mouseDeltaAction = InputSystem.actions.FindAction("Looking");
-        _cameraAngle = _cameraTransform.localEulerAngles.x;
-    }
-
-    private void OnEnable()
-    {
-        InputAction jump = InputSystem.actions.FindAction("Jump");
-        if (jump != null)
-            jump.performed += OnJump;
-    }
-    private void OnDisable()
-    {
-        InputAction jump = InputSystem.actions.FindAction("Jump");
-        if (jump != null)
-            jump.performed -= OnJump;
+        _input = GetComponent<IPlayerInput>();
+        _motor = GetComponent<CharacterMotor>();
+        _look = GetComponent<PlayerLook>();
     }
 
     private void Update()
     {
-        Vector3 forward = Vector3.ProjectOnPlane(_cameraTransform.TransformDirection(0, 0, 1), Vector3.up).normalized;
-        Vector3 right = Vector3.ProjectOnPlane(_cameraTransform.right, Vector3.up).normalized;
+        _look.Look(_input.Look);
 
-        _cameraAngle -= _mouseDeltaAction.ReadValue<Vector2>().y * _verticalMouseSensitivity;
-        _cameraAngle = Mathf.Clamp(_cameraAngle, _verticalMinAngle, _verticalMaxAngle);
-        _cameraTransform.localEulerAngles = Vector2.right * _cameraAngle;
-
-        _transform.Rotate(Vector3.up * _horizontalMouseSensitivity * _mouseDeltaAction.ReadValue<Vector2>().x);
-
-        if (_characterController == null)
-            return;
-        Vector3 input = _movementAction.ReadValue<Vector3>();
-        Vector3 movement = forward * input.z * _speed + right * input.x * _strafeSpeed;
-
-        if (_characterController.isGrounded)
-        {
-            if (MustJump)
-                movement += Vector3.up * _jumpForce;
-            else
-                movement += Vector3.down * Mathf.Max(_speed, _strafeSpeed);
-            _characterController.Move(movement * Time.deltaTime);
-        }
-        else
-        {
-            _characterController.Move((_characterController.velocity + Physics.gravity * Time.deltaTime * _gravityFactor) * Time.deltaTime);
-        }
-    }
-
-    private void OnJump(InputAction.CallbackContext c)
-    {
-        if (_characterController == null)
-            return;
-        _isJumpCalled = _characterController.isGrounded;
+        _motor.Move(
+            _input.Movement,
+            _look.Forward,
+            _look.Right,
+            _input.ConsumeJump());
     }
     private void OnDrawGizmos()
     {

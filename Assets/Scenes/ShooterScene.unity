@@ -129,8 +129,10 @@ GameObject:
   m_Component:
   - component: {fileID: 381611982}
   - component: {fileID: 381611981}
-  - component: {fileID: 381611983}
-  - component: {fileID: 381611984}
+  - component: {fileID: 381611988}
+  - component: {fileID: 381611987}
+  - component: {fileID: 381611986}
+  - component: {fileID: 381611985}
   m_Layer: 0
   m_Name: CharacterControlledPlayer
   m_TagString: Untagged
@@ -179,7 +181,7 @@ Transform:
   - {fileID: 837189363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &381611983
+--- !u!114 &381611985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,19 +190,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 381611980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 336395a760265534a911c6ba152e9708, type: 3}
+  m_Script: {fileID: 11500000, guid: 49e5ce8898bb843448acde3b65b21bd8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
   _cameraTransform: {fileID: 837189363}
-  _speed: 8
-  _strafeSpeed: 7
-  _jumpForce: 7
-  _gravityFactor: 1.7
-  _horizontalMouseSensitivity: 0.5
-  _verticalMouseSensitivity: 0.5
+  _body: {fileID: 381611982}
+  _horizontalSensitivity: 0.5
+  _verticalSensitivity: 0.5
   _verticalMinAngle: -89
   _verticalMaxAngle: 89
---- !u!114 &381611984
+--- !u!114 &381611986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381611980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5609f738d23b3644383e9a2f792ff6c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterMotor
+  _speed: 8
+  _strafeSpeed: 7
+  _jumpSpeed: 7
+  _gravityFactor: 1.7
+--- !u!114 &381611987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,6 +227,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19dc8882e476434a9d95135503dd501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+--- !u!114 &381611988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381611980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336395a760265534a911c6ba152e9708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &650812870
 GameObject:
   m_ObjectHideFlags: 0

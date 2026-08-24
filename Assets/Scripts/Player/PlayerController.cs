@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(IPlayerInput))]
 [RequireComponent(typeof(CharacterMotor))]

@@ -93,7 +93,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
             ""id"": ""91e916f6-fbee-43b3-bb94-95f2c7315aca"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""6c1c0424-10b3-4fb3-9602-d459409e18b4"",
                     ""expectedControlType"": ""Vector3"",
@@ -102,7 +102,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Looking"",
+                    ""name"": ""LookDelta"",
                     ""type"": ""Value"",
                     ""id"": ""c09b7b40-0e07-4517-929e-5bbe5573dd1c"",
                     ""expectedControlType"": ""Vector2"",
@@ -118,6 +118,15 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4c45f81-3b49-4b9d-8e8d-bece5d261f67"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -128,7 +137,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -139,7 +148,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -150,7 +159,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -161,7 +170,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -172,7 +181,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -183,7 +192,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -194,7 +203,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -205,7 +214,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -216,7 +225,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Looking"",
+                    ""action"": ""LookDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -230,6 +239,17 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f932d7ad-b12e-487e-aeb0-946350633a7e"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -238,9 +258,10 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
 }");
         // ShooterPlayer
         m_ShooterPlayer = asset.FindActionMap("ShooterPlayer", throwIfNotFound: true);
-        m_ShooterPlayer_Movement = m_ShooterPlayer.FindAction("Movement", throwIfNotFound: true);
-        m_ShooterPlayer_Looking = m_ShooterPlayer.FindAction("Looking", throwIfNotFound: true);
+        m_ShooterPlayer_Move = m_ShooterPlayer.FindAction("Move", throwIfNotFound: true);
+        m_ShooterPlayer_LookDelta = m_ShooterPlayer.FindAction("LookDelta", throwIfNotFound: true);
         m_ShooterPlayer_Jump = m_ShooterPlayer.FindAction("Jump", throwIfNotFound: true);
+        m_ShooterPlayer_Shoot = m_ShooterPlayer.FindAction("Shoot", throwIfNotFound: true);
     }
 
     ~@ShooterActions()
@@ -321,9 +342,10 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
     // ShooterPlayer
     private readonly InputActionMap m_ShooterPlayer;
     private List<IShooterPlayerActions> m_ShooterPlayerActionsCallbackInterfaces = new List<IShooterPlayerActions>();
-    private readonly InputAction m_ShooterPlayer_Movement;
-    private readonly InputAction m_ShooterPlayer_Looking;
+    private readonly InputAction m_ShooterPlayer_Move;
+    private readonly InputAction m_ShooterPlayer_LookDelta;
     private readonly InputAction m_ShooterPlayer_Jump;
+    private readonly InputAction m_ShooterPlayer_Shoot;
     /// <summary>
     /// Provides access to input actions defined in input action map "ShooterPlayer".
     /// </summary>
@@ -336,17 +358,21 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
         /// </summary>
         public ShooterPlayerActions(@ShooterActions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "ShooterPlayer/Movement".
+        /// Provides access to the underlying input action "ShooterPlayer/Move".
         /// </summary>
-        public InputAction @Movement => m_Wrapper.m_ShooterPlayer_Movement;
+        public InputAction @Move => m_Wrapper.m_ShooterPlayer_Move;
         /// <summary>
-        /// Provides access to the underlying input action "ShooterPlayer/Looking".
+        /// Provides access to the underlying input action "ShooterPlayer/LookDelta".
         /// </summary>
-        public InputAction @Looking => m_Wrapper.m_ShooterPlayer_Looking;
+        public InputAction @LookDelta => m_Wrapper.m_ShooterPlayer_LookDelta;
         /// <summary>
         /// Provides access to the underlying input action "ShooterPlayer/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_ShooterPlayer_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "ShooterPlayer/Shoot".
+        /// </summary>
+        public InputAction @Shoot => m_Wrapper.m_ShooterPlayer_Shoot;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -373,15 +399,18 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_ShooterPlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_ShooterPlayerActionsCallbackInterfaces.Add(instance);
-            @Movement.started += instance.OnMovement;
-            @Movement.performed += instance.OnMovement;
-            @Movement.canceled += instance.OnMovement;
-            @Looking.started += instance.OnLooking;
-            @Looking.performed += instance.OnLooking;
-            @Looking.canceled += instance.OnLooking;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @LookDelta.started += instance.OnLookDelta;
+            @LookDelta.performed += instance.OnLookDelta;
+            @LookDelta.canceled += instance.OnLookDelta;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         /// <summary>
@@ -393,15 +422,18 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="ShooterPlayerActions" />
         private void UnregisterCallbacks(IShooterPlayerActions instance)
         {
-            @Movement.started -= instance.OnMovement;
-            @Movement.performed -= instance.OnMovement;
-            @Movement.canceled -= instance.OnMovement;
-            @Looking.started -= instance.OnLooking;
-            @Looking.performed -= instance.OnLooking;
-            @Looking.canceled -= instance.OnLooking;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @LookDelta.started -= instance.OnLookDelta;
+            @LookDelta.performed -= instance.OnLookDelta;
+            @LookDelta.canceled -= instance.OnLookDelta;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         /// <summary>
@@ -443,19 +475,19 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
     public interface IShooterPlayerActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMovement(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Looking" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "LookDelta" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLooking(InputAction.CallbackContext context);
+        void OnLookDelta(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -463,5 +495,12 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Shoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

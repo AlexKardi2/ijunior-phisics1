@@ -243,7 +243,7 @@ public partial class @ShooterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f932d7ad-b12e-487e-aeb0-946350633a7e"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

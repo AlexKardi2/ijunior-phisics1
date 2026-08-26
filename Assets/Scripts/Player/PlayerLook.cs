@@ -14,6 +14,7 @@ public class PlayerLook : MonoBehaviour
     private float _pitch;
 
     public Vector3 CameraPosition => _cameraTransform.position;
+    public Ray LookRay => new Ray(_cameraTransform.position, _cameraTransform.forward);
     public Vector3 Forward =>
         Vector3.ProjectOnPlane(
             _cameraTransform.forward,

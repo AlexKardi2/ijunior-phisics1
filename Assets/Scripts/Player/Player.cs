@@ -32,6 +32,6 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        _shotgun.Shoot(_look.CameraPosition, _look.Forward);
+        _shotgun.Shoot(_look.LookRay);
     }
 }

@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e555d4d3388a4d43b42fc59439947d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
-  _decalPrefab: {fileID: 5347861645017992057, guid: 7e3a85c95b9be9640a64bef16fdf7a76, type: 3}
+  _decalPrefab: {fileID: 585875022604387681, guid: 524770362315d8842919efbf60d288ef, type: 3}
   _decalOffset: 0.1
   _audioSource: {fileID: 309936182}
   _damage: 2
@@ -2879,29 +2879,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 655939242345989953, guid: 524770362315d8842919efbf60d288ef, type: 3}
+      propertyPath: NoiseModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655939242345989953, guid: 524770362315d8842919efbf60d288ef, type: 3}
+      propertyPath: NoiseModule.separateAxes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655939242345989953, guid: 524770362315d8842919efbf60d288ef, type: 3}
+      propertyPath: RotationModule.x.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 655939242345989953, guid: 524770362315d8842919efbf60d288ef, type: 3}
+      propertyPath: RotationModule.y.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 655939242345989953, guid: 524770362315d8842919efbf60d288ef, type: 3}
+      propertyPath: RotationBySpeedModule.x.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 655939242345989953, guid: 524770362315d8842919efbf60d288ef, type: 3}
+      propertyPath: RotationBySpeedModule.y.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1991126082470994770, guid: 524770362315d8842919efbf60d288ef, type: 3}
       propertyPath: m_Name
       value: WFX_BImpact Concrete + Hole Unlit
-      objectReference: {fileID: 0}
-    - target: {fileID: 2768428936997773343, guid: 524770362315d8842919efbf60d288ef, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: af2f1912c4106a343be7942bd5051b3b, type: 2}
-    - target: {fileID: 6421866146134120080, guid: 524770362315d8842919efbf60d288ef, type: 3}
-      propertyPath: InitialModule.startSizeY.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6421866146134120080, guid: 524770362315d8842919efbf60d288ef, type: 3}
-      propertyPath: InitialModule.startSizeZ.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6421866146134120080, guid: 524770362315d8842919efbf60d288ef, type: 3}
-      propertyPath: InitialModule.startRotationX.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6421866146134120080, guid: 524770362315d8842919efbf60d288ef, type: 3}
-      propertyPath: InitialModule.startRotationY.minMaxState
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

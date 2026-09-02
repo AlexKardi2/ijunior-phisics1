@@ -28,6 +28,7 @@ public class Shotgun : MonoBehaviour
             Transform decal = Instantiate(_decalPrefab, hitInfo.transform);
             decal.position = hitInfo.point + hitInfo.normal * _decalOffset;
             decal.LookAt(hitInfo.point);
+            decal.Rotate(180f, 0f, 0f, Space.Self);
             
             AbstractHealth health = hitInfo.collider.GetComponentInParent<AbstractHealth>();
             health?.TakeDamage(_damage);

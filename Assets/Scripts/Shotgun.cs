@@ -4,9 +4,9 @@ public class Shotgun : MonoBehaviour
 {
     //R Создание префабов отделить в отдельный класс и вызывать его из оружия
     //R Разделить скрипт на зоны ответственности. отдельно создание эффектов, отдельно нанесение урона, нанесение урона при помощи рейкастов - отдельным скриптом, т.е. оружие должно только вызывать в скрипте необходимость послать рейкаст
+    [SerializeField] private ShootEffects _shotEffects;
     [SerializeField] private Transform _decalPrefab;
     [SerializeField] private float _decalOffset=0.1f;
-    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private float _maxDistance = 100f;
     [SerializeField] private float _impactForce = 10f;
@@ -16,13 +16,13 @@ public class Shotgun : MonoBehaviour
     {
         if (_decalPrefab == null)
             throw new System.NullReferenceException("Decal prefab is not set");
-        if (_audioSource == null)
-            throw new System.NullReferenceException("Audio souis not set");
+        if (_shotEffects == null)
+            throw new System.NullReferenceException("Shooter effects is not set");
     }
     public void Shoot(Ray shootRay)
     {
-        _audioSource.Play();
-        
+        _shotEffects.Perform();
+
         if (Physics.Raycast(shootRay, out RaycastHit hitInfo, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
         {
             Transform decal = Instantiate(_decalPrefab, hitInfo.transform);

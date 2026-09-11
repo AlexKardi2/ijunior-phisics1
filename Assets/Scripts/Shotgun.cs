@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Shotgun : MonoBehaviour
 {
-    //R Создание префабов отделить в отдельный класс и вызывать его из оружия
-    //R Разделить скрипт на зоны ответственности. отдельно создание эффектов, отдельно нанесение урона, нанесение урона при помощи рейкастов - отдельным скриптом, т.е. оружие должно только вызывать в скрипте необходимость послать рейкаст
+    //Ref Создание префабов отделить в отдельный класс и вызывать его из оружия
+    //Ref Разделить скрипт на зоны ответственности. отдельно создание эффектов, отдельно нанесение урона, нанесение урона при помощи рейкастов - отдельным скриптом, т.е. оружие должно только вызывать в скрипте необходимость послать рейкаст
+    //Ref Для звуков создать отдельный скрипт, это было бы логичнее
     [SerializeField] private ShootEffects _shotEffects;
     [SerializeField] private Transform _decalPrefab;
     [SerializeField] private float _decalOffset=0.1f;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private float _maxDistance = 100f;
     [SerializeField] private float _impactForce = 10f;
-    [SerializeField] LayerMask _layerMask;
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private Animator _animator;
 
     private void Start()
     {
@@ -18,10 +20,13 @@ public class Shotgun : MonoBehaviour
             throw new System.NullReferenceException("Decal prefab is not set");
         if (_shotEffects == null)
             throw new System.NullReferenceException("Shooter effects is not set");
+        if (_animator == null)
+            throw new System.NullReferenceException("Animator is not set");
     }
     public void Shoot(Ray shootRay)
     {
         _shotEffects.Perform();
+        _animator.SetTrigger("Shoot");
 
         if (Physics.Raycast(shootRay, out RaycastHit hitInfo, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
         {

@@ -1822,13 +1822,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
   _shotEffects: {fileID: 399810187}
   _decalPrefab: {fileID: 585875022604387681, guid: 524770362315d8842919efbf60d288ef, type: 3}
-  _decalOffset: 0.1
+  _decalOffset: 0.01
   _damage: 2
   _maxDistance: 100
   _impactForce: 250
   _layerMask:
     serializedVersion: 2
     m_Bits: 131
+  _animator: {fileID: 33068729535254864}
 --- !u!1 &1423263024
 GameObject:
   m_ObjectHideFlags: 0

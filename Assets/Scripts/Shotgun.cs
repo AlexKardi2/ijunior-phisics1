@@ -13,6 +13,14 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private float _impactForce = 10f;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Animator _animator;
+    [SerializeField] private AudioSource _reloadSound;
+
+    [Header("Shell")]
+    [SerializeField] private Rigidbody _shellPrefab;
+    [SerializeField] private Transform _shellPoint;
+    [SerializeField] private float _shellSpeed = 2f;
+    [SerializeField] private float _shellAngular = 5f;
+    
 
     private void Start()
     {
@@ -20,8 +28,12 @@ public class Shotgun : MonoBehaviour
             throw new System.NullReferenceException("Decal prefab is not set");
         if (_shotEffects == null)
             throw new System.NullReferenceException("Shooter effects is not set");
+        if (_reloadSound == null)
+            throw new System.NullReferenceException("Reload sound is not set");
         if (_animator == null)
             throw new System.NullReferenceException("Animator is not set");
+        if (_shellPrefab == null)
+            throw new System.NullReferenceException("Shell prefab is not set");
     }
     public void Shoot(Ray shootRay)
     {
@@ -46,4 +58,16 @@ public class Shotgun : MonoBehaviour
     }
 
     public void Shoot(Vector3 startPoint, Vector3 direction) => Shoot(new Ray(startPoint, direction));
+
+    public void PlayReloadSound()
+    {
+        _reloadSound.Play();
+    }
+
+    public void ExtractShell()
+    {
+        Rigidbody shell = Instantiate(_shellPrefab, _shellPoint.position, _shellPoint.rotation);
+        shell.linearVelocity = _shellPoint.forward * _shellSpeed;
+        shell.angularVelocity = Vector3.up * _shellAngular;
+    }
 }

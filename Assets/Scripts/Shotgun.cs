@@ -19,7 +19,7 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private Rigidbody _shellPrefab;
     [SerializeField] private Transform _shellPoint;
     [SerializeField] private float _shellSpeed = 2f;
-    [SerializeField] private float _shellAngular = 5f;
+    [SerializeField] private float _shellAngularRange = 5f;
     
 
     private void Start()
@@ -68,6 +68,6 @@ public class Shotgun : MonoBehaviour
     {
         Rigidbody shell = Instantiate(_shellPrefab, _shellPoint.position, _shellPoint.rotation);
         shell.linearVelocity = _shellPoint.forward * _shellSpeed;
-        shell.angularVelocity = Vector3.up * _shellAngular;
+        shell.angularVelocity = Vector3.up * (Random.Range(-_shellAngularRange, _shellAngularRange));
     }
 }

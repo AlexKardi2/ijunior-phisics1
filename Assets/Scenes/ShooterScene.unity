@@ -1963,7 +1963,7 @@ MonoBehaviour:
   _shellPrefab: {fileID: 3060733679600793311, guid: c93a7eed4e7bbec4a8d046a25a3eab51, type: 3}
   _shellPoint: {fileID: 8718961888876180845}
   _shellSpeed: 2
-  _shellAngular: 15
+  _shellAngularRange: 5
 --- !u!1 &1423263024
 GameObject:
   m_ObjectHideFlags: 0

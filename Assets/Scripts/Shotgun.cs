@@ -5,6 +5,7 @@ public class Shotgun : MonoBehaviour
     //Ref Создание префабов отделить в отдельный класс и вызывать его из оружия
     //Ref Разделить скрипт на зоны ответственности. отдельно создание эффектов, отдельно нанесение урона, нанесение урона при помощи рейкастов - отдельным скриптом, т.е. оружие должно только вызывать в скрипте необходимость послать рейкаст
     //Ref Для звуков создать отдельный скрипт, это было бы логичнее
+    //TODO нельзя стрелять до окончания перезарядки
     [SerializeField] private ShootEffects _shotEffects;
     [SerializeField] private Transform _decalPrefab;
     [SerializeField] private float _decalOffset=0.1f;

@@ -1568,7 +1568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de906ad91857477459957beee10f1cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShake
-  _perlinNoiseTimeScale: 1
+  _perlinNoiseTimeScale: 15
   _perlinNoiseAmplitudeCurve:
     serializedVersion: 2
     m_Curve:
@@ -1593,6 +1593,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _maxImpulse: 500
+  _minImpulseMultipler: 0.5
+  _tension: 150
+  _damping: 8
 --- !u!1 &1044942829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,6 +2006,7 @@ MonoBehaviour:
   _shellPoint: {fileID: 8718961888876180845}
   _shellSpeed: 2
   _shellAngularRange: 15
+  _cameraShake: {fileID: 837189365}
 --- !u!1 &1423263024
 GameObject:
   m_ObjectHideFlags: 0

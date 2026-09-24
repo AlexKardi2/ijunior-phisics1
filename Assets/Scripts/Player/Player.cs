@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         _input.OnShootPerformed -= Shoot;
     }
 
-    private void Start()
+    private void OnValidate()
     {
         if (_shotgun == null)
             throw new NullReferenceException ("Weapon link is not set"); 

@@ -7,11 +7,6 @@ public class RigidbodyGun : MonoBehaviour
     [SerializeField] private Transform _startPosition;
     [SerializeField] private float _speed = 10f;
 
-    private void Start()
-    {
-
-
-    }
 
     public void Shoot(InputAction.CallbackContext context)
     {

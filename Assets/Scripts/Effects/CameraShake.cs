@@ -1,16 +1,24 @@
-using System;
+using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class CameraShake : MonoBehaviour
 {
+    [Header("Noise shake")]
     [SerializeField] private float _perlinNoiseTimeScale = 1f;
     [SerializeField] private AnimationCurve _perlinNoiseAmplitudeCurve;
+
+    [Header("Recoil")]
+    [SerializeField] private float _maxImpulse = 10f;
+    [SerializeField] private float _minImpulseMultipler = 0.5f;
+    [SerializeField] private float _tension = 10f;
+    [SerializeField] private float _damping = 10f;
+
     private Transform _cameraTransform;
     private Vector3 _shakeAngles = new Vector3();
     private Vector3 _recoilAngles = new Vector3();
     private Vector3 _recoilVelocity = new Vector3();
-    private float _amplitude = 5f;
+    private float _amplitude = 12f;
     private float _duration = 1f;
     private float _shakeTimer = -1f;
 
@@ -29,9 +37,10 @@ public class CameraShake : MonoBehaviour
 
     private void UpdateRecoil()
     {
-
+        _recoilAngles += _recoilVelocity * Time.deltaTime;
+        _recoilVelocity -= _recoilAngles * Time.deltaTime * _tension;
+        _recoilVelocity = Vector3.Lerp(_recoilVelocity, Vector3.zero, Time.deltaTime * _damping);
     }
-
     private void UpdateShake()
     {
         if (_shakeTimer > 0)
@@ -46,9 +55,9 @@ public class CameraShake : MonoBehaviour
         _shakeAngles *= _perlinNoiseAmplitudeCurve.Evaluate(Mathf.Clamp01(1 - _shakeTimer));
     }
 
-    [ContextMenu("MakeShake")]
+    [ProPlayButton]
     public void MakeShake() =>
-        MakeShake(15, 3);
+        MakeShake(15f, 2f);
 
     public void MakeShake(float amplitude, float duration)
     {
@@ -56,8 +65,13 @@ public class CameraShake : MonoBehaviour
         _duration = Mathf.Max(duration, 0.05f);
         _shakeTimer = 1;
     }
-    public void MakeRecoil(Vector3 forces, float duration)
+
+    [ProPlayButton]
+    public void MakeRecoil() =>
+        MakeRecoil(-Vector3.right * Random.Range(_maxImpulse * _minImpulseMultipler, _maxImpulse)+Vector3.up * Random.Range(-_maxImpulse , _maxImpulse) * _minImpulseMultipler);
+    public void MakeRecoil(Vector3 impulse)
     {
+        _recoilVelocity += impulse;
 
     }
 }

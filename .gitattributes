@@ -37,7 +37,7 @@
 
 # Unity YAML files
 *.anim                  unity-yaml
-Assets/Terrain/*.asset binary
+Assets/Assets/Terrain/*.asset binary
 *.asset 				unity-yaml
 *.brush                 unity-yaml
 *.controller            unity-yaml

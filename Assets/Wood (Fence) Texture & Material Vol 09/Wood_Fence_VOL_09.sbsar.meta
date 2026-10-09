@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d2084722c2c14424fae175e96d3e3cd8
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _fileAsset: {instanceID: 0}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 407474
+  packageName: Wood (Fence) Texture & Material Vol. 09
+  packageVersion: 1.0
+  assetPath: Assets/Wood (Fence) Texture & Material Vol 09/Wood_Fence_VOL_09.sbsar
+  uploadId: 994558

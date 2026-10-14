@@ -25,6 +25,21 @@ public class Shotgun : MonoBehaviour
     [Header("Recoil")]
     [SerializeField] private CameraShake _cameraShake;
 
+    private void OnValidate()
+    {
+        if (_decalPrefab == null)
+            throw new System.NullReferenceException("Decal prefab is not set");
+        if (_shotEffects == null)
+            throw new System.NullReferenceException("Shooter effects link is not set");
+        if (_reloadSound == null)
+            throw new System.NullReferenceException("Reload sound is not set");
+        if (_animator == null)
+            throw new System.NullReferenceException("Animator is not set");
+        if (_shellPrefab == null)
+            throw new System.NullReferenceException("Shell prefab is not set");
+        if (_cameraShake == null)
+            throw new System.NullReferenceException("Camera shake link is not set");
+    }
     public void Shoot(Ray shootRay)
     {
         _cameraShake.MakeRecoil();
@@ -60,20 +75,5 @@ public class Shotgun : MonoBehaviour
         Rigidbody shell = Instantiate(_shellPrefab, _shellPoint.position, _shellPoint.rotation);
         shell.linearVelocity = _shellPoint.forward * _shellSpeed;
         shell.angularVelocity = Vector3.up * (Random.Range(-_shellAngularRange, _shellAngularRange));
-    }
-    private void OnValidate()
-    {
-        if (_decalPrefab == null)
-            throw new System.NullReferenceException("Decal prefab is not set");
-        if (_shotEffects == null)
-            throw new System.NullReferenceException("Shooter effects link is not set");
-        if (_reloadSound == null)
-            throw new System.NullReferenceException("Reload sound is not set");
-        if (_animator == null)
-            throw new System.NullReferenceException("Animator is not set");
-        if (_shellPrefab == null)
-            throw new System.NullReferenceException("Shell prefab is not set");
-        if (_cameraShake == null)
-            throw new System.NullReferenceException("Camera shake link is not set");
     }
 }

@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class WaterSplasher : MonoBehaviour
 {
-    [SerializeField] Transform _prefub;
+    [SerializeField] private Transform _splashPrefab;
     
     private Transform _waterLevel;
 
+    private void OnValidate ()
+    {
+        if (_splashPrefab == null)
+            throw new System.NullReferenceException("Splash prefab link is not set");
+    }
     private void Awake()
     {
         _waterLevel = transform;
@@ -19,18 +24,9 @@ public class WaterSplasher : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(_waterLevel.position, 0.1f);
+        Gizmos.DrawSphere(transform.position, 0.1f);
     }
-
-    private void TryCreateWaterSplash (Vector3 startPoint, Vector3 endPoint)
-    {
-        if (CheckWater(endPoint))
-        {
-            RaycastOnVirtualPlane(startPoint, endPoint - startPoint);
-        }
-    }
-
-    public Vector3 RaycastOnVirtualPlane (Vector3 startPoint, Vector3 direction)
+    private Vector3 RaycastOnVirtualPlane (Vector3 startPoint, Vector3 direction)
     {
         Plane plane = new Plane(Vector3.up, _waterLevel.position);
         Ray ray = new Ray(startPoint, direction);
@@ -38,4 +34,14 @@ public class WaterSplasher : MonoBehaviour
             return (startPoint + direction.normalized * enterDistance);
         return Vector3.zero;
     }
+
+    public void TryCreateWaterSplash (Vector3 startPoint, Vector3 endPoint)
+    {
+        if (CheckWater(endPoint))
+        {
+            Vector3 point = RaycastOnVirtualPlane(startPoint, endPoint - startPoint);
+            Destroy(Instantiate(_splashPrefab, point, _splashPrefab.rotation).gameObject, 5f);
+        }
+    }
+
 }

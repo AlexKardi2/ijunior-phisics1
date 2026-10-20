@@ -15,6 +15,7 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioSource _reloadSound;
+    [SerializeField] private WaterSplasher _splasher;
 
     [Header("Shell")]
     [SerializeField] private Rigidbody _shellPrefab;
@@ -39,6 +40,8 @@ public class Shotgun : MonoBehaviour
             throw new System.NullReferenceException("Shell prefab is not set");
         if (_cameraShake == null)
             throw new System.NullReferenceException("Camera shake link is not set");
+        if (_splasher == null)
+            throw new System.NullReferenceException("Water splasher link is not set");
     }
     public void Shoot(Ray shootRay)
     {
@@ -48,6 +51,8 @@ public class Shotgun : MonoBehaviour
 
         if (Physics.Raycast(shootRay, out RaycastHit hitInfo, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
         {
+            _splasher.TryCreateWaterSplash(shootRay.origin, hitInfo.point);
+
             Transform decal = Instantiate(_decalPrefab, hitInfo.transform);
             decal.position = hitInfo.point + hitInfo.normal * _decalOffset;
             decal.LookAt(hitInfo.point);

@@ -5291,8 +5291,9 @@ GameObject:
   - component: {fileID: 766825215}
   - component: {fileID: 766825214}
   - component: {fileID: 766825213}
-  m_Layer: 0
-  m_Name: Cube (4)
+  - component: {fileID: 766825216}
+  m_Layer: 6
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5391,6 +5392,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766825211}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &766825216
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766825211}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73a50b2e30864ad46972418ec67fae88, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &768531467
 GameObject:
   m_ObjectHideFlags: 0
@@ -5938,7 +5961,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -18868,7 +18891,7 @@ MonoBehaviour:
   _impactForce: 250
   _layerMask:
     serializedVersion: 2
-    m_Bits: 131
+    m_Bits: 67
   _animator: {fileID: 4698660454358609}
   _reloadSound: {fileID: 1199336650}
   _splasher: {fileID: 830530504}

@@ -43,6 +43,15 @@ public class Shotgun : MonoBehaviour
         if (_splasher == null)
             throw new System.NullReferenceException("Water splasher link is not set");
     }
+
+    private Vector3 InvertChildScale (Vector3 childScale, Vector3 parentScale)
+    {
+        childScale.x /= parentScale.x;
+        childScale.y /= parentScale.y;
+        childScale.z /= parentScale.z;
+        return childScale;
+    }
+
     public void Shoot(Ray shootRay)
     {
         _cameraShake.MakeRecoil();
@@ -57,7 +66,7 @@ public class Shotgun : MonoBehaviour
             decal.position = hitInfo.point + hitInfo.normal * _decalOffset;
             decal.LookAt(hitInfo.point);
             decal.Rotate(180f, 0f, 0f, Space.Self);
-            
+            decal.localScale = InvertChildScale(decal.localScale, hitInfo.transform.lossyScale);
             AbstractHealth health = hitInfo.collider.GetComponentInParent<AbstractHealth>();
             health?.TakeDamage(_damage);
 
@@ -65,7 +74,6 @@ public class Shotgun : MonoBehaviour
             targetBody?.AddForceAtPosition(shootRay.direction * _impactForce, hitInfo.point);
 
         }
-
     }
 
     public void Shoot(Vector3 startPoint, Vector3 direction) => Shoot(new Ray(startPoint, direction));

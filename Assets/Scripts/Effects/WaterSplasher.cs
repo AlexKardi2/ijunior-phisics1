@@ -21,11 +21,6 @@ public class WaterSplasher : MonoBehaviour
         return input.y < _waterLevel.position.y;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.position, 0.1f);
-    }
     private Vector3 RaycastOnVirtualPlane (Vector3 startPoint, Vector3 direction)
     {
         Plane plane = new Plane(Vector3.up, _waterLevel.position);

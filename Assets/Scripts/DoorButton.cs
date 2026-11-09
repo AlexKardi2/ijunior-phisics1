@@ -10,7 +10,7 @@ public class DoorButton : AbstractHealth
             Debug.LogError("Door link for button haven't set", this);
     }
 
-    public override void Die()
+    public override void LostHPAction()
     {
 
         _door.SetBool("IsOpened", !_door.GetBool("IsOpened"));

@@ -20,9 +20,9 @@ public abstract class AbstractHealth : MonoBehaviour
         if (_health < 0)
         {
             _health = 0;
-            Die();
+            LostHPAction();
         }
     }
 
-    public abstract void Die();
+    public abstract void LostHPAction();
 }

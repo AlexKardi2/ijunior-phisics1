@@ -7,7 +7,6 @@ public class Shotgun : MonoBehaviour
     //Ref Для звуков создать отдельный скрипт, это было бы логичнее
     //TODO нельзя стрелять до окончания перезарядки
     [SerializeField] private ShootEffects _shotEffects;
-    [SerializeField] private Transform _decalPrefab;
     [SerializeField] private float _decalOffset=0.1f;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private float _maxDistance = 100f;
@@ -18,7 +17,7 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private WaterSplasher _splasher;
 
     [Header("Shell")]
-    [SerializeField] private Rigidbody _shellPrefab;
+
     [SerializeField] private Transform _shellPoint;
     [SerializeField] private float _shellSpeed = 2f;
     [SerializeField] private float _shellAngularRange = 5f;

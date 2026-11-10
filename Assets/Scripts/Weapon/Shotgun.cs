@@ -27,16 +27,12 @@ public class Shotgun : MonoBehaviour
 
     private void OnValidate()
     {
-        if (_decalPrefab == null)
-            throw new System.NullReferenceException("Decal prefab is not set");
         if (_shotEffects == null)
             throw new System.NullReferenceException("Shooter effects link is not set");
         if (_reloadSound == null)
             throw new System.NullReferenceException("Reload sound is not set");
         if (_animator == null)
             throw new System.NullReferenceException("Animator is not set");
-        if (_shellPrefab == null)
-            throw new System.NullReferenceException("Shell prefab is not set");
         if (_cameraShake == null)
             throw new System.NullReferenceException("Camera shake link is not set");
         if (_splasher == null)
@@ -59,6 +55,7 @@ public class Shotgun : MonoBehaviour
 
         if (Physics.Raycast(shootRay, out RaycastHit hitInfo, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
         {
+            /*
             _splasher.TryCreateWaterSplash(shootRay.origin, hitInfo.point);
 
             Transform decal = Instantiate(_decalPrefab, hitInfo.transform);
@@ -71,7 +68,7 @@ public class Shotgun : MonoBehaviour
 
             Rigidbody targetBody = hitInfo.rigidbody;
             targetBody?.AddForceAtPosition(shootRay.direction * _impactForce, hitInfo.point);
-
+            */
         }
     }
 
@@ -84,8 +81,10 @@ public class Shotgun : MonoBehaviour
 
     public void ExtractShell()
     {
+        /*
         Rigidbody shell = Instantiate(_shellPrefab, _shellPoint.position, _shellPoint.rotation);
         shell.linearVelocity = _shellPoint.forward * _shellSpeed;
         shell.angularVelocity = Vector3.up * (Random.Range(-_shellAngularRange, _shellAngularRange));
+        */
     }
 }

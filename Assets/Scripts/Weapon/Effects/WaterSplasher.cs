@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WaterSplasher : MonoBehaviour
 {
+    [SerializeField] private float _splashTime = 5f;
     private Transform _waterLevel;
 
     private void Awake()
@@ -35,17 +36,18 @@ public class WaterSplasher : MonoBehaviour
             return;
         }
 
-        if (CheckWater(endPoint))
+        if (CheckWater(endPoint) 
+            && TryRaycastOnVirtualPlane(startPoint, endPoint - startPoint, out Vector3 point)
+            )
         {
-            Vector3 point = RaycastOnVirtualPlane(startPoint, endPoint - startPoint);
-            Destroy(Instantiate(_splashPrefab, point, _splashPrefab.rotation).gameObject, 5f);
+            Destroy(Instantiate(splashPrefab, point, splashPrefab.rotation).gameObject, _splashTime);
         }
     }
 
 
 
     // ImpactEffects
-    _waterSplasher.TryCreateWaterSplash(ray.origin, hit.point, _factory.SplashPrefab);
-        _decalPlacer.Place(hit);
+    //_waterSplasher.TryCreateWaterSplash(ray.origin, hit.point, _factory.SplashPrefab);
+    //    _decalPlacer.Place(hit);
 
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "_ prefabs", menuName = "Scriptable objects/Weapon prefabs")]
 public class WeaponPrefabs : ScriptableObject
 {
     [SerializeField] private Rigidbody _shellPrefab;
@@ -12,7 +13,11 @@ public class WeaponPrefabs : ScriptableObject
 
     private void OnValidate()
     {
+        if (_shellPrefab == null)
+            Debug.LogError("Shell prefab link is not set", this);
+        if (_decalPrefab == null)
+            Debug.LogError("Decal prefab link is not set", this);
         if (_splashPrefab == null)
-            throw new System.NullReferenceException("Splash prefab link is not set");
+            Debug.LogError("Splash prefab link is not set", this);
     }
 }

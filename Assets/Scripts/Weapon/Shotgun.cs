@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Shotgun : MonoBehaviour
 {
+    
+    
+    /*
     //Ref Создание префабов отделить в отдельный класс и вызывать его из оружия
     //Ref Разделить скрипт на зоны ответственности. отдельно создание эффектов, отдельно нанесение урона, нанесение урона при помощи рейкастов - отдельным скриптом, т.е. оружие должно только вызывать в скрипте необходимость послать рейкаст
     //Ref Для звуков создать отдельный скрипт, это было бы логичнее
     //TODO нельзя стрелять до окончания перезарядки
     [SerializeField] private ShootEffects _shotEffects;
-    [SerializeField] private float _decalOffset=0.1f;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private float _maxDistance = 100f;
     [SerializeField] private float _impactForce = 10f;
@@ -15,6 +17,7 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioSource _reloadSound;
     [SerializeField] private WaterSplasher _splasher;
+    [SerializeField] private DecalPlacer _decalPlacer;
 
     [Header("Shell")]
 
@@ -39,13 +42,7 @@ public class Shotgun : MonoBehaviour
             throw new System.NullReferenceException("Water splasher link is not set");
     }
 
-    private Vector3 InvertChildScale (Vector3 childScale, Vector3 parentScale)
-    {
-        childScale.x /= parentScale.x;
-        childScale.y /= parentScale.y;
-        childScale.z /= parentScale.z;
-        return childScale;
-    }
+
 
     public void Shoot(Ray shootRay)
     {
@@ -55,20 +52,16 @@ public class Shotgun : MonoBehaviour
 
         if (Physics.Raycast(shootRay, out RaycastHit hitInfo, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
         {
-            /*
-            _splasher.TryCreateWaterSplash(shootRay.origin, hitInfo.point);
+            
+            //_splasher.TryCreateWaterSplash(shootRay.origin, hitInfo.point);
+            _decalPlacer.Place(hitInfo);
 
-            Transform decal = Instantiate(_decalPrefab, hitInfo.transform);
-            decal.position = hitInfo.point + hitInfo.normal * _decalOffset;
-            decal.LookAt(hitInfo.point);
-            decal.Rotate(180f, 0f, 0f, Space.Self);
-            decal.localScale = InvertChildScale(decal.localScale, hitInfo.transform.lossyScale);
             AbstractHealth health = hitInfo.collider.GetComponentInParent<AbstractHealth>();
             health?.TakeDamage(_damage);
 
             Rigidbody targetBody = hitInfo.rigidbody;
             targetBody?.AddForceAtPosition(shootRay.direction * _impactForce, hitInfo.point);
-            */
+            
         }
     }
 
@@ -81,10 +74,9 @@ public class Shotgun : MonoBehaviour
 
     public void ExtractShell()
     {
-        /*
         Rigidbody shell = Instantiate(_shellPrefab, _shellPoint.position, _shellPoint.rotation);
         shell.linearVelocity = _shellPoint.forward * _shellSpeed;
         shell.angularVelocity = Vector3.up * (Random.Range(-_shellAngularRange, _shellAngularRange));
-        */
-    }
+        
+    }*/
 }

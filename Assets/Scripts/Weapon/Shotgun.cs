@@ -1,9 +1,55 @@
+using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Shotgun : MonoBehaviour
 {
-    
-    
+    [SerializeField] private CameraShake _cameraShake;
+    [SerializeField] private float _reloadFallbackDuration = 1.7f;
+    private Animator _animator;
+    private bool _isReloading = false;
+    private int _reloadGeneration;
+
+    public void Shoot(Vector3 startPoint, Vector3 direction) => Shoot(new Ray(startPoint, direction));
+
+    public void Shoot(Ray ray)
+    {
+        if (_isReloading)
+            return;
+
+        _cameraShake.MakeRecoil();
+    }
+
+    //TODO set animation event
+    public void ExtractShell() => _shellEjector.Eject();
+
+    //TODO set animauton event
+    public void FinishReload ()
+    {
+        _isReloading = true;
+    }
+
+    private void OnValidate()
+    {
+        if (_cameraShake == null)
+            Debug.LogError("Camera shake link is not set", this);
+
+    }
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+    private IEnumerator ReloadFallback(int generation)
+    {
+        yield return new WaitForSeconds(_reloadFallbackDuration);
+
+        if (_isReloading && generation == _reloadGeneration)
+            FinishReload();
+    }
+
+
+
     /*
     //Ref Создание префабов отделить в отдельный класс и вызывать его из оружия
     //Ref Разделить скрипт на зоны ответственности. отдельно создание эффектов, отдельно нанесение урона, нанесение урона при помощи рейкастов - отдельным скриптом, т.е. оружие должно только вызывать в скрипте необходимость послать рейкаст
@@ -36,8 +82,7 @@ public class Shotgun : MonoBehaviour
             throw new System.NullReferenceException("Reload sound is not set");
         if (_animator == null)
             throw new System.NullReferenceException("Animator is not set");
-        if (_cameraShake == null)
-            throw new System.NullReferenceException("Camera shake link is not set");
+
         if (_splasher == null)
             throw new System.NullReferenceException("Water splasher link is not set");
     }
@@ -65,7 +110,7 @@ public class Shotgun : MonoBehaviour
         }
     }
 
-    public void Shoot(Vector3 startPoint, Vector3 direction) => Shoot(new Ray(startPoint, direction));
+    
 
     public void PlayReloadSound()
     {

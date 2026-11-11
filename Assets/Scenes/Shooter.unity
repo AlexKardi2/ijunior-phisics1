@@ -6086,7 +6086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13efbc87088d24e4bb79703428f58874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterSplasher
-  _splashPrefab: {fileID: 400002, guid: 165e7288ee04c184db64b9f12086cdc3, type: 3}
+  _splashTime: 5
 --- !u!1 &837189360
 GameObject:
   m_ObjectHideFlags: 0
@@ -19110,23 +19110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e555d4d3388a4d43b42fc59439947d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
-  _shotEffects: {fileID: 399810187}
-  _decalPrefab: {fileID: 585875022604387681, guid: 524770362315d8842919efbf60d288ef, type: 3}
-  _decalOffset: 0.01
-  _damage: 2
-  _maxDistance: 100
-  _impactForce: 250
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 67
-  _animator: {fileID: 4698660454358609}
-  _reloadSound: {fileID: 1199336650}
-  _splasher: {fileID: 830530504}
-  _shellPrefab: {fileID: 3060733679600793311, guid: c93a7eed4e7bbec4a8d046a25a3eab51, type: 3}
-  _shellPoint: {fileID: 8718961888876180845}
-  _shellSpeed: 2
-  _shellAngularRange: 15
   _cameraShake: {fileID: 837189365}
+  _reloadFallbackDuration: 1.7
 --- !u!1 &1334715393
 GameObject:
   m_ObjectHideFlags: 0
@@ -34895,6 +34880,14 @@ PrefabInstance:
     - target: {fileID: 2517058222728680401, guid: 9345f45f9dc1cb444b73a7d4c1e47563, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517058222728680401, guid: 9345f45f9dc1cb444b73a7d4c1e47563, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517058222728680401, guid: 9345f45f9dc1cb444b73a7d4c1e47563, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3989311042113118536, guid: 9345f45f9dc1cb444b73a7d4c1e47563, type: 3}
       propertyPath: m_Type

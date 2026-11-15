@@ -43,11 +43,4 @@ public class WaterSplasher : MonoBehaviour
             Destroy(Instantiate(splashPrefab, point, splashPrefab.rotation).gameObject, _splashTime);
         }
     }
-
-
-
-    // ImpactEffects
-    //_waterSplasher.TryCreateWaterSplash(ray.origin, hit.point, _factory.SplashPrefab);
-    //    _decalPlacer.Place(hit);
-
 }

@@ -1053,7 +1053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542a3f6eda534da42b04e32bf85000da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootEffects
-  _shootSound: {fileID: 309936182}
   _particleSystem: {fileID: 8409136085776893839}
   _lightSource: {fileID: 1816434778}
 --- !u!1 &404771556
@@ -19112,6 +19111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
   _cameraShake: {fileID: 837189365}
   _reloadFallbackDuration: 1.7
+  _muzzleEffects: {fileID: 399810187}
 --- !u!1 &1334715393
 GameObject:
   m_ObjectHideFlags: 0
@@ -34603,7 +34603,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4698660454358607}
   - component: {fileID: 1264033511}
+  - component: {fileID: 4698660454358613}
   - component: {fileID: 4698660454358609}
+  - component: {fileID: 4698660454358612}
+  - component: {fileID: 4698660454358611}
+  - component: {fileID: 4698660454358610}
   m_Layer: 7
   m_Name: shotgun
   m_TagString: Untagged
@@ -34704,6 +34708,63 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4698660454358610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659748230079267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938ca472aa32a3249b1b1d867019f532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactEffects
+  _waterSplasher: {fileID: 830530504}
+--- !u!114 &4698660454358611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659748230079267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b26412fcfb622b4ab97cac5ba58b7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DecalPlacer
+  _offset: 0.01
+--- !u!114 &4698660454358612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659748230079267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4814357b735a9b543a6baa3ee45a7b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponPrefabFactory
+  _weaponPrefabs: {fileID: 11400000, guid: 95b60c166a2498041a7f32daad82b119, type: 2}
+--- !u!114 &4698660454358613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659748230079267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4a7201e8b273c40ab135bb64eb0f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitscanShooter
+  _damage: 10
+  _maxDistance: 100
+  _impactForce: 10
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &4951554748647823
 Transform:
   m_ObjectHideFlags: 0

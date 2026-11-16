@@ -32,6 +32,10 @@ public class Shotgun : MonoBehaviour
         _audio.PlayShoot();
         _animator.SetTrigger("Shoot");
 
+        _isReloading = true;
+        _reloadGeneration++;
+        StartCoroutine(ReloadFallback(_reloadGeneration));
+
         _shooter.Shoot(shootRay);
     }
 
@@ -42,7 +46,7 @@ public class Shotgun : MonoBehaviour
 
     public void FinishReload()
     {
-        _isReloading = true;
+        _isReloading = false;
     }
 
     private void OnValidate()

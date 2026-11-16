@@ -23,4 +23,8 @@ public class HitscanShooter : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        _impactEffects = GetComponent<ImpactEffects>();
+    }
 }

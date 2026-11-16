@@ -19110,7 +19110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
   _cameraShake: {fileID: 837189365}
-  _reloadFallbackDuration: 1.7
+  _reloadFallbackDuration: 1.15
   _muzzleEffects: {fileID: 399810187}
 --- !u!1 &1334715393
 GameObject:
@@ -34766,7 +34766,7 @@ MonoBehaviour:
   _impactForce: 250
   _layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 73
 --- !u!114 &4698660454358614
 MonoBehaviour:
   m_ObjectHideFlags: 0

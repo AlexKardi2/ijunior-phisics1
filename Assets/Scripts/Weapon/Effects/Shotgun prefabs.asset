@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shotgun prefabs
   m_EditorClassIdentifier: Assembly-CSharp::WeaponPrefabs
   _shellPrefab: {fileID: 3060733679600793311, guid: c93a7eed4e7bbec4a8d046a25a3eab51, type: 3}
-  _decalPrefab: {fileID: 5347861645017992057, guid: 7e3a85c95b9be9640a64bef16fdf7a76, type: 3}
+  _decalPrefab: {fileID: 585875022604387681, guid: 524770362315d8842919efbf60d288ef, type: 3}
   _splashPrefab: {fileID: 400002, guid: 165e7288ee04c184db64b9f12086cdc3, type: 3}

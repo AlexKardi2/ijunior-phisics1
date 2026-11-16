@@ -1000,7 +1000,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.5833333
-    functionName: PlayReloadSound
+    functionName: PlayReload
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -1008,6 +1008,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.73333335
     functionName: ExtractShell
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1666666
+    functionName: FinishReload
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

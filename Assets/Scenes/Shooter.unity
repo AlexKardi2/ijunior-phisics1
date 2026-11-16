@@ -34608,6 +34608,8 @@ GameObject:
   - component: {fileID: 4698660454358612}
   - component: {fileID: 4698660454358611}
   - component: {fileID: 4698660454358610}
+  - component: {fileID: 4698660454358615}
+  - component: {fileID: 4698660454358614}
   m_Layer: 7
   m_Name: shotgun
   m_TagString: Untagged
@@ -34759,12 +34761,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a7201e8b273c40ab135bb64eb0f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitscanShooter
-  _damage: 10
+  _damage: 2
   _maxDistance: 100
-  _impactForce: 10
+  _impactForce: 250
   _layerMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &4698660454358614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659748230079267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0b13a3e612ba04b9e26710abf702d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShellEjector
+  _shellPoint: {fileID: 8718961888876180845}
+  _speed: 2
+  _angularRange: 15
+--- !u!114 &4698660454358615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659748230079267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5fa49aee1d6ac458f95cb60bded1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponAudio
+  _shootSound: {fileID: 309936182}
+  _reloadSound: {fileID: 309936182}
 --- !u!4 &4951554748647823
 Transform:
   m_ObjectHideFlags: 0

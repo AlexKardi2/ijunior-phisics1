@@ -22,7 +22,10 @@ public class Shotgun : MonoBehaviour
     public void Shoot(Ray shootRay)
     {
         if (_isReloading)
+        {
+            Debug.Log("Still reloading");
             return;
+        }
         
         _cameraShake.MakeRecoil();
         _muzzleEffects.Perform();
@@ -32,13 +35,11 @@ public class Shotgun : MonoBehaviour
         _shooter.Shoot(shootRay);
     }
 
-    //TODO set animation event
     public void ExtractShell()
     {
         _shellEjector.Eject();
     }
 
-    //TODO set animauton event
     public void FinishReload()
     {
         _isReloading = true;

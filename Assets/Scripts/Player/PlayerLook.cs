@@ -49,9 +49,9 @@ public class PlayerLook : MonoBehaviour
         _pitch = NormalizeAngle(_cameraTransform.localEulerAngles.x);
     }
 
-    private void Start()
+    private void OnValidate()
     {
         if (_cameraTransform == null || _body == null)
-            Debug.LogError("Links are lost!", this);
+            Debug.LogError("Player look links are lost!", this);
     }
 }

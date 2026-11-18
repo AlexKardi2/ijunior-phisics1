@@ -10,11 +10,6 @@ public class CharacterMotor : MonoBehaviour
 
     private CharacterController _characterController;
 
-    private void Awake()
-    {
-        _characterController = GetComponent<CharacterController>();
-    }
-
     public void Move(
         Vector3 input,
         Vector3 forward,
@@ -36,5 +31,10 @@ public class CharacterMotor : MonoBehaviour
         }
 
         _characterController.Move(velocity * Time.deltaTime);
+    }
+
+    private void Awake()
+    {
+        _characterController = GetComponent<CharacterController>();
     }
 }
